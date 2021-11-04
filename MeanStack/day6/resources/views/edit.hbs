@@ -1,0 +1,26 @@
+{{>header}}
+{{>navbar}}
+<section class="container">
+<form method="post" class="row">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="{{ data.email}}">
+       
+    </div>
+   
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Name</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" name="name" value="{{ data.name}}">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">age</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" name="age" value="{{ data.age }}">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">address</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" name="address" value="{{ data.address }}">
+    </div>
+    <button type="submit" class="btn btn-warning">Submit</button>
+</form>
+</section>
+{{>footer}}
