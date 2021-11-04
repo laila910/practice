@@ -1,0 +1,32 @@
+{{>header}}
+{{>navbar}}
+
+<section class="container">
+    <div class="row ">
+        <table  class=" table table-striped ">
+            <tr>
+            <th>Id</th>
+                <th>name</th>
+                <th>actions</th>
+            </tr>
+    {{#if isEmpty}}
+            <tr>
+                <td colspan="3">No data to show</td>
+            </tr>
+            {{/if}}
+            {{#each data }}
+<tr>
+    <td>{{this._id}}</td>
+    <td>{{this.name}}</td>
+    <td>
+        <a class="btn btn-warning m-1" href="/single/{{this._id}}">show User</a>
+        <a  class="btn btn-warning m-1" href="/editUser/{{this._id}}">edit User</a>
+        <a class="btn btn-danger m-1" href="/delUser/{{this._id}}"> Delete User</a>
+    </td>
+</tr>
+{{/each }}
+        </table>
+
+    </div>
+</section>
+{{>footer}}
