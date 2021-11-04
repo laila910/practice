@@ -1,0 +1,44 @@
+        /* * {
+            margin: 0;
+            padding: 0;
+        }
+         */
+        
+        table {
+            border-collapse: collapse;
+            width: 85vw;
+            height: 75vh;
+            caption-side: bottom;
+            background-image: url("images/planet.png");
+            background-repeat: no-repeat;
+            background-position: 200px top;
+            border-style: dashed;
+        }
+        
+        td {
+            text-align: center;
+            border-style: dashed;
+        }
+        
+        caption {
+            color: red
+        }
+        
+        a {
+            color: red;
+            text-decoration: none;
+        }
+        
+        th {
+            background-color: RGBA(51, 153, 254, 0.2);
+            border-style: dashed;
+        }
+        /* a:link {}
+
+a:visited {} */
+        
+        a:hover {
+            color: white;
+            background-color: red;
+        }
+        /* a:active {} */
