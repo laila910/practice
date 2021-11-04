@@ -1,0 +1,25 @@
+user
+    - name, email, mobile No=>[], password,lived in :{hometown:{city: ,coutry: },currenttown:{city: ,country: }},BirthDate,gender,profileImage:[], status:active or not,created_at,work=>[{workPlace: ,position: ,description: ,city: ,period: from  to  }],college=>{nameofCollege: ,University: ,department: ,status:student or graduuate,degree: if status is graduate only ,period: from  to ,description: ,},websiteslinks:[{type: , link: }],friends:[user: ],messages:[{user: ,message: }]
+    functions:
+    --> password must stored in encrypted way
+    --> mark logged in users
+        - register
+        - login
+        - logout
+        - profile
+        - edit profile
+        - deactivate 
+        - activate
+        - accept friend
+        - remove friend
+        - show messages
+        - reply messages 
+        - add Mobile No
+
+posts
+    - content, type (image, video, txt),  user,audience:(public,private,friends,custom:share with or not share with), comments => [{ user: , details: }], likes => [{ user }]
+    functions:
+        - add post => logged users only
+        - show all posts
+        - add comment
+        - like or dislike post
