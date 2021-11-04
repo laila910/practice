@@ -7,5 +7,5 @@ router.post('/addPost', auth, postController.addPost)
 
 router.get('/myPosts', auth, postController.myPosts)
 
-
+router.patch('/editPost/:id', auth, postController.editPost)
 module.exports = router

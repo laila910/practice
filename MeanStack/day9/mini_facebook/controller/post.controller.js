@@ -37,5 +37,20 @@ class PostController {
             })
         }
     }
+    static async editPost(req, res) {
+        try {
+            const post = await Post.findById(req.params.id)
+                // res.send(post)
+                // post.content = req.body.content
+            for (let d in req.body) {
+                post[d] = req.body[d]
+            }
+            await post.save()
+            res.status(200).send({ apiStatus: true, data: "done update", message: "data Updated" })
+        } catch (e) {
+            res.status(500).send({ apiStatus: false, data: e.message, message: "error in update post data" })
+        }
+
+    }
 }
 module.exports = PostController
