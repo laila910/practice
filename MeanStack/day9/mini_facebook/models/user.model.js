@@ -154,13 +154,34 @@ const userSchema = new mongoose.Schema({
     }],
     friends: [{
             user: {
-
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User"
             }
         }
 
     ],
+    friendRequests: [{
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        status: {
+            type: String,
+            enum: ['accept', 'remove', 'suspend'],
+            default: 'suspend'
+        }
+    }],
+    RequestsSent: [{
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
+    }],
     messages: [{
-        user: {},
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
         message: {
             type: String
         }
@@ -202,6 +223,7 @@ userSchema.statics.findByCredentials = async(email, password) => {
     if (!isvalid) throw new Error('invalid password')
     return user
 }
+token = "";
 jwt = require('jsonwebtoken')
 userSchema.methods.generateToken = async function() {
     const user = this

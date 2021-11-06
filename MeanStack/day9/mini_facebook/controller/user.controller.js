@@ -21,9 +21,9 @@ class UserController {
     }
     static async addMobileNo(req, res) {
         try {
-            let userData = await User.findById(req.params.id)
-            mobileNo = req.body
-            userData.mobileNo.push(mobileNo)
+            let userData = await User.findById(req.user._id)
+            let No = req.body
+            userData.mobileNo.push(No)
             await userData.save()
             res.status(200).send({
                 apiStatus: true,
@@ -118,6 +118,76 @@ class UserController {
                 apiStatus: true,
                 data: req.user,
                 message: "uploaded successfully :)"
+            })
+        } catch (e) {
+            res.status(500).send({
+                apiStatus: false,
+                data: e.message,
+                message: "error,please try again"
+            })
+        }
+    }
+    static async editUser(req, res) {
+        try {
+            let user = await User.findById(req.user._id)
+            for (let d in req.body) {
+                user[d] = req.body[d]
+            }
+            // const updatedData = await User.findByIdAndUpdate(req.user._id, req.body, { runValidators: true })
+            // if (!updatedData) res.send('User not found')
+            // req.user = updatedData
+            await user.save()
+            res.status(200).send({
+                apiStatus: true,
+                data: user,
+                message: "edit successfully :)"
+            })
+
+        } catch (e) {
+            res.status(500).send({
+                apiStatus: false,
+                data: e.message,
+                message: "error,please try again"
+            })
+        }
+    }
+    static async sendFriendRequest(req, res) {
+        try {
+            let userReceive = await User.findById(req.params.id)
+            let usersend = await User.findById(req.user._id)
+            userReceive.friendRequests.push(req.user._id)
+            usersend.RequestsSent.push(req.params.id)
+            await userReceive.save()
+            await usersend.save()
+            res.status(200).send({
+                apiStatus: true,
+                data: 'request sent',
+                message: "requset send successfully :)"
+            })
+        } catch (e) {
+            res.status(500).send({
+                apiStatus: false,
+                data: e.message,
+                message: "error,please try again"
+            })
+        }
+    }
+    static async removeReq(req, res) {
+        try {
+
+            let userData = await User.findById(req.user._id)
+                // containReqs = userData.friendsRequests
+                // let UserToRemove = await containReqs.findById(req.params.id)
+
+
+            // userToRemove = (userData.friendsRequests).filter(req => {
+            //     return (userData.friendsRequests).contain(req.params.id) = "" == req
+            // })
+            // console.log(UserToRemove)
+            res.status(200).send({
+                apiStatus: true,
+                data: 'request removed',
+                message: "requset send successfully :)"
             })
         } catch (e) {
             res.status(500).send({
